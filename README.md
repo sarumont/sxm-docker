@@ -1,10 +1,8 @@
-# sxm-player
+# sxm-docker
 
-[![Documentation Status](https://readthedocs.org/projects/sxm-player/badge/?version=latest)](https://sxm-player.readthedocs.io/en/latest/?badge=latest)
-[![CI Status](https://github.com/AngellusMortis/sxm-player/actions/workflows/ci.yml/badge.svg)](https://github.com/AngellusMortis/sxm-player/actions/workflows/ci.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/afffd386b11a760d80cc/maintainability)](https://codeclimate.com/github/AngellusMortis/sxm-player/maintainability)
-[![Latest PyPI version](https://pypip.in/v/sxm-player/badge.png)](https://pypi.org/project/sxm-player/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/angellusmortis/sxm-player.svg?style=flat-square)](https://hub.docker.com/r/angellusmortis/sxm-player/)
+Docker wrapper around [sxm-player](https://github.com/AngellusMortis/sxm-player)
+
+[![CI Status](https://github.com/AngellusMortis/sxm-docker/actions/workflows/docker-stable.yml/badge.svg)](https://github.com/AngellusMortis/sxm-docker/actions/workflows/docker-stable.yml)
 
 > **warning**
 >
@@ -16,33 +14,6 @@
 > speakers from the radio directly. Using `sxm-player` in any corporate
 > setting, to attempt to pirate music, or to try to make a profit off
 > your subscription may result in you getting in legal trouble.
-
-A pluggable SXM music player written in Python
-
-- Free software: MIT license
-- Documentation: <https://sxm-player.readthedocs.io>.
-
-## Features
-
-- Provides a CLI SXM client
-- Can easily provide any SXM client via an anonymous HLS stream that
-  can be play on any compatible remote client
-- Provides CLI interface to play SXM channel to a MP3 file on disk
-- Can archive live streams from a channel and process any songs/shows
-  from it
-- Pluggable API to allow you to create your own SXM clients on top of
-  it
-
-## Player Classes
-
-Here are a list of know pluggable player classes you can use to extend
-sxm-player
-
-- [sxm-discord](https://github.com/AngellusMortis/sxm-discord): A
-  Discord bot that lets you play SXM content
-
-If you have developed your own player class, make a PR to add it here!
-Or make an issue for me to add it.
 
 ## Usage
 
@@ -60,7 +31,7 @@ docker run --rm -it \
     -e SXM_USERNAME=username \
     -e SXM_PASSWORD=password \
     -p 9999:9999 \
-    sxm:latest
+    ghcr.io/angellusmortis/sxm-docker:latest
 $ ffmpeg -y -i http://127.0.0.1:9999/octane.m3u8 -f mp2 output.mp3
 ```
 
@@ -76,7 +47,7 @@ docker run --rm -it \
     -e SXM_USERNAME=username \
     -e SXM_PASSWORD=password \
     -e SXM_ARCHIVE=octane \
-    sxm:latest
+    ghcr.io/angellusmortis/sxm-docker:latest
 ```
 
 ### Plugins
@@ -92,5 +63,5 @@ docker run --rm -it \
     -e SXM_USERNAME=username \
     -e SXM_PASSWORD=password \
     -e SXM_DISCORD_TOKEN=token \
-    sxm:latest
+    ghcr.io/angellusmortis/sxm-docker:latest
 ```
