@@ -23,4 +23,12 @@ else
     echo "Running HLS proxy..."
 fi
 
-sxm-player
+ARGS=""
+if [[ -n ${SXM_USERNAME} ]]; then
+  ARGS="${ARGS} --username ${SXM_USERNAME}"
+fi
+if [[ -n ${SXM_PASSWORD} ]]; then
+  ARGS="${ARGS} --password ${SXM_PASSWORD}"
+fi
+
+sxm-player --username $SXM_USERNAME --password $SXM_PASSWORD
