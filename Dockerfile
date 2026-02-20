@@ -1,4 +1,4 @@
-FROM python:3.9.6-slim-buster
+FROM python:3.9-slim-bookworm
 
 LABEL org.opencontainers.image.authors="cbailey@mort.is"
 LABEL org.opencontainers.image.title=sxm-player
@@ -26,5 +26,6 @@ RUN chmod +x /start.sh
 VOLUME ["/output"]
 
 EXPOSE 9999/tcp
+EXPOSE 9998/tcp
 
 CMD /start.sh

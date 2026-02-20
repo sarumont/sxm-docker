@@ -6,6 +6,9 @@ set -o nounset
 
 export SXM_HOST=0.0.0.0
 
+# MP3 proxy defaults (can be overridden via env)
+export SXM_MP3_PORT=${SXM_MP3_PORT:-9998}
+
 if [[ -n ${SXM_ARCHIVE+x} ]]; then
     export SXM_OUTPUT_FOLDER=/output
 fi
@@ -20,7 +23,7 @@ elif [[ -n ${SXM_ARCHIVE+x} ]]; then
 
     echo "Running archiver..."
 else
-    echo "Running HLS proxy..."
+    echo "Running HLS proxy + MP3 proxy (port ${SXM_MP3_PORT})..."
 fi
 
 sxm-player

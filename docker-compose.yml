@@ -1,0 +1,19 @@
+services:
+  sxm-player:
+    build:
+      context: .
+      dockerfile: unstable.Dockerfile
+    container_name: sxm-player
+    restart: unless-stopped
+    ports:
+      - "9999:9999"   # HLS proxy
+      - "9998:9998"   # MP3 stream proxy
+    environment:
+      - SXM_USERNAME=${SXM_USERNAME}
+      - SXM_PASSWORD=${SXM_PASSWORD}
+      # Optional overrides:
+      # - SXM_REGION=US         # US or CA
+      # - SXM_QUALITY=LARGE     # SMALL, MEDIUM, LARGE
+      # - SXM_MP3_PORT=9998
+    volumes:
+      - ./output:/output
